@@ -1,3 +1,30 @@
+<?php
+function munge($string,$len=5) {
+	$alphabet = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXZ0123456789';
+	$rv = '';
+	$seed = sha1('nanunanu' . $string);
+	for($i=0;$i<strlen($seed);$i+=2) {
+		$slab = hexdec($seed[$i] . $seed[$i+1]);
+		$val = $alphabet[$slab % strlen($alphabet)];
+		$rv .= $val;
+		if(strlen($rv) >= $len) {
+			return $rv;
+		}
+	}
+}
+if(!isset($_GET['plan'])) {
+	$seed = munge(rand());
+	header("Location: /?plan=$seed");
+	exit;
+}
+$seed = $_GET['plan'];
+if(!preg_match('/^[\w\d]{5}$/',$seed)) {
+	header("Location: /");
+	exit;
+}
+$seed2 = munge(rand());
+
+print <<<EOT
 <!-- http://github.com/hinathan/bplangen -->
 <style>
 * {
@@ -36,18 +63,18 @@ p {
 }
 </style>
 <title>Business plan generator</title>
-<a href=/>
-<img src="/graph.php" class="top"/>
+<a href="/?plan=$seed2">
+<img src="/graph.php?plan=$seed" class="top"/>
 <img src="/napkin.jpg" class="back" />
 </a>
 
 <p>
-Business plan generator<br/>
+Business plan generator &mdash; Click the napkin for a new business plan!<br/>
 <span class="re">A silly toy made by <a href="https://www.facebook.com/hinathan">Nathan Schmidt</a>.<br/>
-<a href="http://github.com/hinathan/bplangen">(code)</a>
+<a href="http://github.com/hinathan/bplangen">(code)</a><br/>
 </span>
 </p>
-<?php
+EOT;
 $stats = '../content/stats.txt';
 if(file_exists($stats)) {
   print file_get_contents($stats);

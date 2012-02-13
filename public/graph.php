@@ -4,7 +4,13 @@ require_once('../lib/autoload.php');
 
 $nodes = array();
 
-//srand(0);
+if(isset($_GET['plan'])) {
+	$sha = sha1($_GET['plan']);
+	$seed = hexdec(substr($sha,0,8));
+} else {
+	$seed = time();
+}
+srand($seed);
 
 $buzz = new Buzz(rdir() .'/content/nouns.txt',rdir() .'/content/verbs.txt',rdir() .'/content/adjectives.txt');
 
