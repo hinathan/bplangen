@@ -35,14 +35,15 @@ for($i=0;$i<rand(3,5);$i++) {
 		$dir = pick('none','both','forward');
 		$color = pick($black,$black,$red,$blue);
 		$label = pick("","","",$buzz->words(1));
-		$links["$nodename.node$less"] = "$nodename -> node$less [dir=$dir, color=$color,label=\"$label\",fontcolor=$color];\n";
+		$style = pick("solid","solid","dashed","dotted");
+		$links["$nodename.node$less"] = "$nodename -> node$less [dir=$dir, style=$style, color=$color,label=\"$label\",fontcolor=$color];\n";
 	}
 }
 
 $g = "digraph G {
 	graph [bb=\"0,0,300,300\", ratio=1, resolution=60,bgcolor=transparent];
 	node [fontname=\"Comic Sans\",penwidth=4,color=\"$black\"];
-	edge [penwidth=4,fontsize=24.0,fontname=\"Comic Sans\",color=\"$black\"];
+	edge [penwidth=4,fontsize=24.0,fontname=\"Comic Sans\",color=\"$black\",arrowsize=3,arrowhead=open,arrowtail=open];
 	
 	\n" . implode("\n",$nodes) . "\n" . implode("\n",$links) . " \n }" ;
 
