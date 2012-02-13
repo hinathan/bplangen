@@ -27,6 +27,7 @@ p {
 	padding:3px;
 }
 </style>
+<title>Business plan generator</title>
 <a href=/>
 <img src="/graph.php" class="top"/>
 <img src="/napkin.png" class="back" />
