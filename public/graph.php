@@ -59,11 +59,11 @@ foreach($dots as $cdot) {
 
 if(!isset($_GET['i'])) {
 	header("Content-Type: image/png");
-	print `/usr/local/bin/dot $fn -Tpng `;
+	print `$dot $fn -Tpng `;
 } else {
 	print "<pre>";
 	print $g;
 	print "\n-----\n";
-	print `/usr/local/bin/dot $fn`;
+	print `$dot $fn`;
 }
 unlink($fn);
