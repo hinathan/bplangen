@@ -1,3 +1,4 @@
+<!-- http://github.com/hinathan/bplangen -->
 <style>
 * {
 	font-family: Helvetica;
@@ -36,4 +37,11 @@ p {
 <img src="/graph.php" class="top"/>
 <img src="/napkin.jpg" class="back" />
 </a>
+
 <p>Business plan generator<br/><small>A silly toy made by <a href="https://www.facebook.com/hinathan">Nathan Schmidt</a>.</small></p>
+<?php
+$stats = '../content/stats.txt';
+if(file_exists($stats)) {
+  print file_get_contents($stats);
+ }
+?>
