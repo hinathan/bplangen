@@ -31,6 +31,9 @@ p {
 	z-index:3;
 	padding:3px;
 }
+.re {
+	font-size:80%;
+}
 </style>
 <title>Business plan generator</title>
 <a href=/>
@@ -38,7 +41,12 @@ p {
 <img src="/napkin.jpg" class="back" />
 </a>
 
-<p>Business plan generator<br/><small>A silly toy made by <a href="https://www.facebook.com/hinathan">Nathan Schmidt</a>.</small></p>
+<p>
+Business plan generator<br/>
+<span class="re">A silly toy made by <a href="https://www.facebook.com/hinathan">Nathan Schmidt</a>.<br/>
+<a href="http://github.com/hinathan/bplangen">(code)</a>
+</span>
+</p>
 <?php
 $stats = '../content/stats.txt';
 if(file_exists($stats)) {
