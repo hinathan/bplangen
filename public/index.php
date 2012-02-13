@@ -1,3 +1,4 @@
+<!-- http://github.com/hinathan/bplangen -->
 <style>
 * {
 	font-family: Helvetica;
@@ -33,3 +34,9 @@ p {
 <img src="/napkin.png" class="back" />
 </a>
 <p>A silly toy made by <a href="https://www.facebook.com/hinathan">Nathan Schmidt</a>.</p>
+<?php
+$stats = '../content/stats.txt';
+if(file_exists($stats)) {
+  print file_get_contents($stats);
+ }
+?>
